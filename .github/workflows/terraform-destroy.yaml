@@ -1,0 +1,19 @@
+name: Terraform Destroy
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  destroy:
+    name: Destroy terraform workspace
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: terraform destroy
+        uses: dflook/terraform-destroy@v1
+        with:
+          path: terraform

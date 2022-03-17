@@ -1,0 +1,15 @@
+name: Terraform Production Deployment
+
+on:
+  pull_request:
+    types:
+      - opened
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/terraform-apply.yaml
+    with:
+      release-name: "production"
